@@ -6,23 +6,27 @@ from configs import *
 
 pygame.init()
 screen1 = Screen()
-screen = pygame.display.set_mode([screen1.width, screen1.height])
+screen = pygame.display.set_mode([screen1.width, screen1.height], pygame.FULLSCREEN)
 pygame.display.set_caption(screen1.title)
 x = random.randint(0, screen.get_width() - Skins.dvd[0].get_width())
 y = random.randint(0, screen.get_height() - Skins.dvd[0].get_height())
 verticalMove = Move.DOWN
 horizotalMove = Move.LEFT
-vel = 2
+vel = 3
 colour = 0
+run = True
 clock = pygame.time.Clock()
 
-while 1:
-    dt = clock.tick(75)
+while run:
+    dt = clock.tick(60)
     #events
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            pygame.quit()
+            run = False
     
+    key = pygame.key.get_pressed()
+    if key[pygame.K_ESCAPE]:
+        run = False
     #movement
     if verticalMove == Move.UP:
         y -= vel
@@ -50,6 +54,8 @@ while 1:
     
     if colour == len(Skins.dvd):
         colour = 0
+        
+    
 
     screen.fill("black")
     screen.blit(Skins.dvd[colour], [x, y])

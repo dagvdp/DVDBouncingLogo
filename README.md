@@ -33,3 +33,7 @@ Start the program
   python3 main.py
 ```
 
+Or just download it in the releases tab. 
+
+[Releases](https://github.com/dagvdp/DVDBouncingLogo/releases/tag/v1.0)
+
